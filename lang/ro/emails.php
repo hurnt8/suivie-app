@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Dacă butonul nu funcționează, copiați acest link în browser:',
     'shipment_created_subject' => 'Coletul dumneavoastră :tracking_code a fost înregistrat — :company',
     'shipment_status_subject' => 'Actualizare pentru coletul :tracking_code: :status',
+
+    'sender' => 'Expeditor',
+    'amount' => 'Sumă / ofertă',
+    'intro_recipient' => ':sender vă trimite un colet prin :company. Iată detaliile, suma comunicată și linkul pentru a urmări parcursul.',
 ];

@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => 'Wenn kein SMTP-Server konfiguriert ist, werden E-Mails lokal protokolliert (Entwicklungsmodus).',
     'settings_saved_toast' => 'Einstellungen gespeichert.',
 
+    // Amount / quote
+    'field_amount' => 'Betrag / Angebot',
+    'field_amount_hint' => 'Wird dem Empfänger auf der Sendungsseite und per E-Mail mitgeteilt.',
+    'quote_match' => 'Vorgeschlagenes Angebot für :destination: :amount',
+    'quote_formula' => ':base + :per_kg pro kg',
+    'quote_none' => 'Für diesen Zielort ist kein Tarif hinterlegt: Bitte Betrag manuell eingeben.',
+    'quote_apply' => 'Angebot übernehmen',
+
+    // Email language
+    'field_mail_locale' => 'E-Mail-Sprache',
+    'field_mail_locale_hint' => 'Sprache der E-Mails, die für diese Sendung versendet werden.',
+
+    // Rates by destination
+    'nav_rates' => 'Tarife',
+    'rates_title' => 'Tarife nach Zielort',
+    'rates_subtitle' => 'Das beim Erstellen einer Sendung vorgeschlagene Angebot hängt von Zielort und Gewicht ab.',
+    'add_rate' => 'Tarif hinzufügen',
+    'edit_rate' => 'Tarif bearbeiten',
+    'field_rate_destination' => 'Zielort',
+    'field_rate_destination_hint' => 'Land oder Stadt, die im Feld „Zielort“ der Sendung gesucht wird (Groß-/Kleinschreibung und Akzente werden ignoriert).',
+    'field_rate_base' => 'Grundbetrag',
+    'field_rate_per_kg' => 'Betrag pro kg',
+    'rate_saved_toast' => 'Tarif gespeichert.',
+    'rate_deleted_toast' => 'Tarif gelöscht.',
 ];

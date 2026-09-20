@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Si el botón no funciona, copie este enlace en su navegador:',
     'shipment_created_subject' => 'Su paquete :tracking_code ha sido registrado — :company',
     'shipment_status_subject' => 'Actualización de su paquete :tracking_code: :status',
+
+    'sender' => 'Remitente',
+    'amount' => 'Importe / presupuesto',
+    'intro_recipient' => ':sender le envía un paquete a través de :company. Aquí tiene su resumen, el importe comunicado y el enlace para seguir su recorrido.',
 ];

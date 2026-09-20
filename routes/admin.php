@@ -15,6 +15,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::livewire('notifications', 'pages::admin.⚡notifications')->name('notifications.index');
 
     Route::middleware(['role:admin'])->group(function () {
+        Route::livewire('rates', 'pages::admin.rates.⚡index')->name('rates.index');
         Route::livewire('users', 'pages::admin.users.⚡index')->name('users.index');
         Route::livewire('settings', 'pages::admin.⚡settings')->name('settings.edit');
     });

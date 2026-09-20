@@ -55,7 +55,7 @@ new #[Title('Tableau de bord')] class extends Component {
         <flux:subheading>{{ __('admin.dashboard_subtitle') }}</flux:subheading>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         @foreach ([
             ['label' => __('admin.stat_total'), 'value' => $this->stats['total'], 'icon' => 'archive-box', 'tint' => 'zinc'],
             ['label' => __('admin.stat_in_transit'), 'value' => $this->stats['in_transit'], 'icon' => 'truck', 'tint' => 'amber'],
@@ -63,7 +63,10 @@ new #[Title('Tableau de bord')] class extends Component {
             ['label' => __('admin.stat_pending'), 'value' => $this->stats['pending'], 'icon' => 'clock', 'tint' => 'sky'],
             ['label' => __('admin.stat_returned'), 'value' => $this->stats['returned'], 'icon' => 'arrow-uturn-left', 'tint' => 'red'],
         ] as $card)
-            <div class="card-elegant p-5 transition-shadow hover:shadow-[var(--shadow-elegant-lg)]">
+            <div @class([
+                'card-elegant p-5 transition-shadow hover:shadow-[var(--shadow-elegant-lg)]',
+                'col-span-2 sm:col-span-1' => $loop->first,
+            ])>
                 <span @class([
                     'flex size-10 items-center justify-center rounded-xl',
                     'bg-zinc-100 text-zinc-600 dark:bg-white/10 dark:text-zinc-300' => $card['tint'] === 'zinc',
@@ -102,7 +105,7 @@ new #[Title('Tableau de bord')] class extends Component {
                         @forelse ($this->recentShipments as $shipment)
                             <tr class="border-b border-zinc-100 last:border-0 dark:border-white/5">
                                 <td class="px-3 py-3">
-                                    <a href="{{ route('admin.shipments.show', $shipment) }}" class="font-mono text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400" wire:navigate>
+                                    <a href="{{ route('admin.shipments.show', $shipment) }}" class="font-mono text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" wire:navigate>
                                         {{ $shipment->tracking_code }}
                                     </a>
                                 </td>

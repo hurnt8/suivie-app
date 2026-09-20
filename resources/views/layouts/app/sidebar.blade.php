@@ -4,7 +4,8 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-zinc-50/70 dark:bg-zinc-950">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200/70 bg-white dark:border-white/10 dark:bg-zinc-900">
+        {{-- The sidebar is always rendered with its dark treatment (the `dark` class scopes every dark: variant inside it), matching the public site's deep-indigo structure. --}}
+        <flux:sidebar sticky collapsible="mobile" class="dark border-e border-white/10 bg-brand-950">
             <flux:sidebar.header>
                 <x-app-logo :sidebar="true" href="{{ route('admin.dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="lg:hidden" />
@@ -15,7 +16,7 @@
                     <flux:sidebar.item icon="layout-grid" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                         {{ __('admin.nav_dashboard') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="archive-box" :href="route('admin.shipments.index')" :current="request()->routeIs('admin.shipments.*')" wire:navigate>
+                    <flux:sidebar.item icon="archive-box" :href="route('admin.shipments.index')" :current="request()->routeIs('admin.shipments.index', 'admin.shipments.show')" wire:navigate>
                         {{ __('admin.nav_shipments') }}
                     </flux:sidebar.item>
                     <flux:sidebar.item icon="plus-circle" :href="route('admin.shipments.create')" :current="request()->routeIs('admin.shipments.create')" wire:navigate>
@@ -37,6 +38,9 @@
 
                 @if (auth()->user()->isAdmin())
                     <flux:sidebar.group :heading="__('admin.nav_group_admin')" class="grid">
+                        <flux:sidebar.item icon="banknotes" :href="route('admin.rates.index')" :current="request()->routeIs('admin.rates.*')" wire:navigate>
+                            {{ __('admin.nav_rates') }}
+                        </flux:sidebar.item>
                         <flux:sidebar.item icon="identification" :href="route('admin.users.index')" :current="request()->routeIs('admin.users.*')" wire:navigate>
                             {{ __('admin.nav_users') }}
                         </flux:sidebar.item>
@@ -59,7 +63,7 @@
         </flux:sidebar>
 
         <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
+        <flux:header class="dark border-b border-white/10 bg-brand-950 lg:hidden">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
             <flux:spacer />

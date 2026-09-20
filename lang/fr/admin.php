@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => "Si aucun serveur SMTP n'est renseigné, les e-mails sont journalisés localement (mode développement).",
     'settings_saved_toast' => 'Paramètres enregistrés.',
 
+    // Amount / quote
+    'field_amount' => 'Montant / devis',
+    'field_amount_hint' => 'Communiqué au destinataire sur la page de suivi et par e-mail.',
+    'quote_match' => 'Devis suggéré pour :destination : :amount',
+    'quote_formula' => ':base + :per_kg par kg',
+    'quote_none' => 'Aucun tarif défini pour cette destination : saisissez le montant manuellement.',
+    'quote_apply' => 'Appliquer le devis',
+
+    // Email language
+    'field_mail_locale' => 'Langue de l’e-mail',
+    'field_mail_locale_hint' => 'Langue des e-mails envoyés pour cette expédition.',
+
+    // Rates by destination
+    'nav_rates' => 'Tarifs',
+    'rates_title' => 'Tarifs par destination',
+    'rates_subtitle' => 'Le devis proposé à la création d’une expédition dépend de sa destination et de son poids.',
+    'add_rate' => 'Ajouter un tarif',
+    'edit_rate' => 'Modifier le tarif',
+    'field_rate_destination' => 'Destination',
+    'field_rate_destination_hint' => 'Pays ou ville recherché dans le champ « Destination » de l’expédition (accents et majuscules ignorés).',
+    'field_rate_base' => 'Montant de base',
+    'field_rate_per_kg' => 'Montant par kg',
+    'rate_saved_toast' => 'Tarif enregistré.',
+    'rate_deleted_toast' => 'Tarif supprimé.',
 ];

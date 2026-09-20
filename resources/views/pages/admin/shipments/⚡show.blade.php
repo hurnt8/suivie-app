@@ -107,6 +107,10 @@ new #[Title('Détail de l\'expédition')] class extends Component {
                 <dl class="space-y-2 text-sm">
                     <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_description') }}</dt><dd class="text-right font-medium text-zinc-800 dark:text-zinc-100">{{ $shipment->description ?? '—' }}</dd></div>
                     <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_weight') }}</dt><dd class="font-medium text-zinc-800 dark:text-zinc-100">{{ $shipment->weight ? $shipment->weight.' kg' : '—' }}</dd></div>
+                    @if ($shipment->hasAmount())
+                        <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_amount') }}</dt><dd class="font-semibold text-zinc-900 dark:text-white">{{ $shipment->formattedAmount() }}</dd></div>
+                    @endif
+                    <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_mail_locale') }}</dt><dd class="font-medium text-zinc-800 dark:text-zinc-100">{{ \App\Support\Locales::name($shipment->mailLocale()) }}</dd></div>
                     <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_package_count') }}</dt><dd class="font-medium text-zinc-800 dark:text-zinc-100">{{ $shipment->package_count }}</dd></div>
                     <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_shipment_type') }}</dt><dd class="font-medium text-zinc-800 dark:text-zinc-100">{{ $shipment->shipment_type->label() }}</dd></div>
                     <div class="flex justify-between"><dt class="text-zinc-400">{{ __('admin.field_service_type') }}</dt><dd class="font-medium text-zinc-800 dark:text-zinc-100">{{ $shipment->service_type->label() }}</dd></div>

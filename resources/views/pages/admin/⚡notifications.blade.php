@@ -55,7 +55,7 @@ new #[Title('Notifications')] class extends Component {
                     @forelse ($this->notifications as $notification)
                         <tr wire:key="notification-{{ $notification->id }}" class="transition-colors hover:bg-zinc-50/80 dark:hover:bg-white/[0.03]">
                             <td class="px-4 py-3">
-                                <a href="{{ route('admin.shipments.show', $notification->shipment) }}" class="font-mono text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400" wire:navigate>
+                                <a href="{{ route('admin.shipments.show', $notification->shipment) }}" class="font-mono text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" wire:navigate>
                                     {{ $notification->shipment->tracking_code }}
                                 </a>
                             </td>

@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Si le bouton ne fonctionne pas, copiez ce lien dans votre navigateur :',
     'shipment_created_subject' => 'Votre colis :tracking_code a été enregistré — :company',
     'shipment_status_subject' => 'Mise à jour de votre colis :tracking_code : :status',
+
+    'sender' => 'Expéditeur',
+    'amount' => 'Montant / devis',
+    'intro_recipient' => ':sender vous envoie un colis via :company. Voici son récapitulatif, le montant communiqué et le lien pour suivre son acheminement.',
 ];

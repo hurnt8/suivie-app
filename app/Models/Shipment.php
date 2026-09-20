@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\ServiceType;
 use App\Enums\ShipmentStatus;
 use App\Enums\ShipmentType;
+use App\Support\Locales;
 use Database\Factories\ShipmentFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Number;
 
 /**
  * @property int $id
@@ -21,6 +23,9 @@ use Illuminate\Support\Carbon;
  * @property int $recipient_id
  * @property string|null $description
  * @property float|null $weight
+ * @property string|null $amount
+ * @property string|null $currency
+ * @property string|null $mail_locale
  * @property int $package_count
  * @property ShipmentType $shipment_type
  * @property ServiceType $service_type
@@ -35,7 +40,7 @@ use Illuminate\Support\Carbon;
  * @property-read Recipient $recipient
  */
 #[Fillable([
-    'tracking_code', 'sender_id', 'recipient_id', 'description', 'weight', 'package_count',
+    'tracking_code', 'sender_id', 'recipient_id', 'description', 'weight', 'amount', 'currency', 'mail_locale', 'package_count',
     'shipment_type', 'service_type', 'origin', 'destination', 'current_status',
     'estimated_delivery_date', 'special_instructions', 'shipped_at', 'delivered_at',
 ])]
@@ -51,6 +56,7 @@ class Shipment extends Model
             'service_type' => ServiceType::class,
             'current_status' => ShipmentStatus::class,
             'weight' => 'decimal:2',
+            'amount' => 'decimal:2',
             'package_count' => 'integer',
             'estimated_delivery_date' => 'date',
             'shipped_at' => 'datetime',
@@ -108,6 +114,43 @@ class Shipment extends Model
     public function trackingUrl(): string
     {
         return route('tracking.show', $this->tracking_code);
+    }
+
+    public function hasAmount(): bool
+    {
+        return $this->amount !== null;
+    }
+
+    /**
+     * The language every email of this shipment is sent in: the one chosen at
+     * creation, falling back to the platform default for older shipments.
+     */
+    public function mailLocale(): string
+    {
+        foreach ([$this->mail_locale, Settings::current()->default_locale, config('app.locale')] as $locale) {
+            if (Locales::isSupported($locale)) {
+                return $locale;
+            }
+        }
+
+        return 'fr';
+    }
+
+    /**
+     * The quote/parcel amount formatted for the current locale and the
+     * currency it was recorded in (e.g. "120,00 €" in fr, "€120.00" in en).
+     */
+    public function formattedAmount(): ?string
+    {
+        if (! $this->hasAmount()) {
+            return null;
+        }
+
+        return Number::currency(
+            (float) $this->amount,
+            in: $this->currency ?: (Settings::current()->currency ?: 'EUR'),
+            locale: app()->getLocale(),
+        );
     }
 
     /**

@@ -36,7 +36,9 @@
                 <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent"></div>
             </div>
 
-            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                <x-public.art.parcels class="pointer-events-none absolute -top-12 right-6 hidden h-28 w-auto opacity-90 lg:block" />
+
                 <a href="{{ route('home') }}#track" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-100/80 transition-colors hover:text-white">
                     <flux:icon.arrow-left class="size-4" />
                     {{ __('messages.nav_track') }}
@@ -162,6 +164,14 @@
                             <p class="text-sm text-zinc-500 dark:text-zinc-400">{{ $shipment->recipient->maskedEmail() }}</p>
                             <p class="text-sm text-zinc-500 dark:text-zinc-400">{{ $shipment->recipient->city }}, {{ $shipment->recipient->country }}</p>
                         </div>
+
+                        @if ($shipment->hasAmount())
+                            <div class="relative overflow-hidden rounded-2xl bg-brand-950 p-6 text-white shadow-[var(--shadow-elegant)]">
+                                <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-orange-500 to-orange-300"></span>
+                                <p class="text-[11px] font-semibold tracking-widest text-brand-200/80 uppercase">{{ __('site.amount') }}</p>
+                                <p class="mt-2 text-3xl font-extrabold tracking-tight">{{ $shipment->formattedAmount() }}</p>
+                            </div>
+                        @endif
 
                         <div class="card-elegant p-6">
                             <h2 class="text-sm font-bold text-zinc-900 dark:text-white">{{ __('messages.tracking_package') }}</h2>

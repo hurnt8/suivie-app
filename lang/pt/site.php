@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Acompanhe a sua encomenda',
     'track_label' => 'Número de rastreio',
     'track_help' => 'Onde encontro o meu número de rastreio?',
-    'preview_label' => 'Pré-visualização do rastreio',
     'current_status' => 'Estado atual',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Serviços',
 
+    // Tracking page
+    'amount' => 'Montante / orçamento',
+
+    // Network section
+    'network_title' => 'Uma rede global, rastreio em cada etapa',
+    'network_text' => 'Onde quer que o seu envio comece a viagem, cada passagem fica registada e visível: da recolha ao centro de triagem, até à entrega ao destinatário.',
+    'network_point_1' => 'Estado atualizado em cada etapa do percurso',
+    'network_point_2' => 'Dados do destinatário ocultos na página pública',
+    'network_point_3' => 'Notificações por e-mail no idioma da sua escolha',
 ];

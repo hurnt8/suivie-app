@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Śledź swoją przesyłkę',
     'track_label' => 'Numer śledzenia',
     'track_help' => 'Gdzie znajdę mój numer śledzenia?',
-    'preview_label' => 'Podgląd śledzenia',
     'current_status' => 'Aktualny status',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Usługi',
 
+    // Tracking page
+    'amount' => 'Kwota / wycena',
+
+    // Network section
+    'network_title' => 'Globalna sieć, śledzenie na każdym etapie',
+    'network_text' => 'Skądkolwiek wyruszy Twoja paczka, każdy etap jest rejestrowany i widoczny: od odbioru, przez centrum sortowania, aż po doręczenie odbiorcy.',
+    'network_point_1' => 'Status aktualizowany na każdym etapie trasy',
+    'network_point_2' => 'Dane odbiorcy są ukryte na stronie publicznej',
+    'network_point_3' => 'Powiadomienia e-mail w wybranym przez Ciebie języku',
 ];

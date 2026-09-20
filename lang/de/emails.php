@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Falls die Schaltfläche nicht funktioniert, kopieren Sie diesen Link in Ihren Browser:',
     'shipment_created_subject' => 'Ihr Paket :tracking_code wurde registriert — :company',
     'shipment_status_subject' => 'Update zu Ihrem Paket :tracking_code: :status',
+
+    'sender' => 'Absender',
+    'amount' => 'Betrag / Angebot',
+    'intro_recipient' => ':sender sendet Ihnen ein Paket über :company. Hier finden Sie die Details, den mitgeteilten Betrag und den Link zur Sendungsverfolgung.',
 ];

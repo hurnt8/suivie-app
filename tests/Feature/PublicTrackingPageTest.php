@@ -19,6 +19,28 @@ test('a valid tracking code shows the shipment with masked personal data', funct
         ->assertDontSee($shipment->recipient->email);
 });
 
+test('the amount communicated to the recipient is shown on the tracking page', function () {
+    $shipment = Shipment::factory()->create(['amount' => 120.5, 'currency' => 'EUR']);
+
+    $this->withSession(['locale' => 'fr'])
+        ->get(route('tracking.show', $shipment->tracking_code))
+        ->assertOk()
+        ->assertSee('120,50');
+
+    $this->withSession(['locale' => 'en'])
+        ->get(route('tracking.show', $shipment->tracking_code))
+        ->assertOk()
+        ->assertSee('€120.50');
+});
+
+test('no amount block is rendered when the shipment has no amount', function () {
+    $shipment = Shipment::factory()->create(['amount' => null, 'currency' => null]);
+
+    $this->get(route('tracking.show', $shipment->tracking_code))
+        ->assertOk()
+        ->assertDontSee(__('site.amount'));
+});
+
 test('tracking lookup is case-insensitive', function () {
     $shipment = Shipment::factory()->create();
 

@@ -104,7 +104,7 @@
             </div>
 
             <div class="hidden lg:col-span-5 lg:block">
-                <x-public.hero-mock />
+                <x-public.art.hero-scene class="mx-auto h-auto w-full max-w-[34rem] drop-shadow-2xl" />
             </div>
         </div>
     </section>
@@ -146,13 +146,20 @@
 
             <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach (\App\Enums\ServiceType::cases() as $service)
-                    <div class="card-elegant relative flex flex-col overflow-hidden p-6 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant-lg)]">
-                        <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-600 to-orange-500"></span>
-                        <span class="flex size-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
-                            <flux:icon :icon="$serviceIcons[$service->value]" class="size-6" />
-                        </span>
-                        <h3 class="mt-5 text-lg font-bold tracking-tight text-zinc-900 dark:text-white">{{ $service->label() }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{{ __('site.service_'.$service->value.'_text') }}</p>
+                    <div class="card-elegant flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant-lg)]">
+                        <div class="relative bg-gradient-to-br from-brand-900 to-brand-950">
+                            <x-public.art.service :type="$service->value" class="block h-auto w-full" />
+                            <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-500 to-orange-500"></span>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
+                                    <flux:icon :icon="$serviceIcons[$service->value]" class="size-5" />
+                                </span>
+                                <h3 class="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">{{ $service->label() }}</h3>
+                            </div>
+                            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{{ __('site.service_'.$service->value.'_text') }}</p>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -184,6 +191,58 @@
         </div>
     </section>
 
+    {{-- Network --}}
+    <section id="network" class="scroll-mt-24 py-20 sm:py-28">
+        <div class="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+            <div class="relative pb-6">
+                <div class="overflow-hidden rounded-3xl shadow-[var(--shadow-elegant-lg)] ring-1 ring-black/5 dark:ring-white/10">
+                    <x-public.art.network class="block h-auto w-full" />
+                </div>
+
+                <div class="absolute bottom-0 left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-zinc-900 shadow-xl ring-1 ring-black/5 sm:left-8 dark:bg-zinc-800 dark:text-white dark:ring-white/10" aria-hidden="true">
+                    <span class="flex size-9 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400">
+                        <flux:icon.truck class="size-5" />
+                    </span>
+                    <span class="text-sm font-semibold">{{ \App\Enums\ShipmentStatus::InTransit->label() }}</span>
+                </div>
+
+                <div class="absolute top-4 right-4 flex items-center gap-2 rounded-full bg-white/95 py-1.5 pr-3.5 pl-2 text-zinc-900 shadow-lg sm:top-6 sm:right-6" aria-hidden="true">
+                    <span class="flex size-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                        <flux:icon.check class="size-4" />
+                    </span>
+                    <span class="text-xs font-semibold">{{ \App\Enums\ShipmentStatus::PickedUp->label() }}</span>
+                </div>
+            </div>
+
+            <div>
+                <span class="text-xs font-bold tracking-widest text-orange-600 uppercase dark:text-orange-400">{{ $company }}</span>
+                <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-balance text-zinc-900 sm:text-4xl dark:text-white">{{ __('site.network_title') }}</h2>
+                <p class="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{{ __('site.network_text') }}</p>
+
+                <ul class="mt-8 space-y-4">
+                    @foreach (['network_point_1', 'network_point_2', 'network_point_3'] as $point)
+                        <li class="flex items-start gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200">
+                            <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
+                                <flux:icon.check class="size-4" />
+                            </span>
+                            {{ __('site.'.$point) }}
+                        </li>
+                    @endforeach
+                </ul>
+
+                <flux:button
+                    href="#track"
+                    variant="primary"
+                    class="mt-10 h-12! px-8! text-base!"
+                    x-data
+                    x-on:click="setTimeout(() => document.getElementById('tracking-code')?.focus({ preventScroll: true }), 500)"
+                >
+                    {{ __('messages.track_button') }}
+                </flux:button>
+            </div>
+        </div>
+    </section>
+
     {{-- CTA --}}
     <section class="relative isolate overflow-hidden bg-brand-950 py-16 sm:py-20">
         <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
@@ -193,21 +252,22 @@
             <div class="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:24px_24px]"></div>
         </div>
 
-        <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-10 px-4 sm:px-6 lg:px-8">
             <div>
                 <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">{{ __('messages.cta_title') }}</h2>
                 <p class="mt-2 max-w-xl text-brand-100/80">{{ __('messages.cta_subtitle') }}</p>
+                <flux:button
+                    href="#track"
+                    variant="primary"
+                    class="mt-8 h-12! px-8! text-base!"
+                    x-data
+                    x-on:click="setTimeout(() => document.getElementById('tracking-code')?.focus({ preventScroll: true }), 500)"
+                >
+                    {{ __('messages.cta_button') }}
+                </flux:button>
             </div>
-            <flux:button
-                href="#track"
-                variant="primary"
-                color="orange"
-                class="h-12! px-8! text-base!"
-                x-data
-                x-on:click="setTimeout(() => document.getElementById('tracking-code')?.focus({ preventScroll: true }), 500)"
-            >
-                {{ __('messages.cta_button') }}
-            </flux:button>
+
+            <x-public.art.parcels class="hidden h-56 w-auto shrink-0 md:block" />
         </div>
     </section>
 

@@ -16,4 +16,8 @@ return [
     'link_fallback' => "If the button doesn't work, copy this link into your browser:",
     'shipment_created_subject' => 'Your package :tracking_code has been registered — :company',
     'shipment_status_subject' => 'Update on your package :tracking_code: :status',
+
+    'sender' => 'Sender',
+    'amount' => 'Amount / quote',
+    'intro_recipient' => ':sender is sending you a package via :company. Here are its details, the amount communicated and the link to follow its journey.',
 ];

@@ -5,9 +5,11 @@ namespace App\Services;
 use App\Enums\ShipmentStatus;
 use App\Models\Recipient;
 use App\Models\Sender;
+use App\Models\Settings;
 use App\Models\Shipment;
 use App\Models\TrackingEvent;
 use App\Models\User;
+use App\Support\Locales;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -30,12 +32,24 @@ class ShipmentService
      */
     public function create(array $data, ?User $actor = null): Shipment
     {
-        $shipment = DB::transaction(function () use ($data, $actor): Shipment {
-            $sender = $this->resolveSender($data['sender']);
-            $recipient = $this->resolveRecipient($data['recipient']);
+        // Forms submit untouched optional inputs as '' — MySQL rejects that for
+        // date/decimal columns, so blanks are stored as NULL instead.
+        $senderData = $this->blankToNull($data['sender']);
+        $recipientData = $this->blankToNull($data['recipient']);
+        $shipmentData = $this->blankToNull($data['shipment']);
+
+        $shipment = DB::transaction(function () use ($senderData, $recipientData, $shipmentData, $actor): Shipment {
+            $sender = $this->resolveSender($senderData);
+            $recipient = $this->resolveRecipient($recipientData);
 
             $shipment = Shipment::create([
-                ...$data['shipment'],
+                ...$shipmentData,
+                // Snapshot the currency so a later Settings change never rewrites history.
+                'currency' => ($shipmentData['amount'] ?? null) !== null ? Settings::current()->currency : null,
+                // Snapshot the email language too, so a later Settings change doesn't switch it mid-shipment.
+                'mail_locale' => Locales::isSupported($shipmentData['mail_locale'] ?? null)
+                    ? $shipmentData['mail_locale']
+                    : Settings::current()->default_locale,
                 'tracking_code' => $this->trackingCodeService->generate(),
                 'sender_id' => $sender->id,
                 'recipient_id' => $recipient->id,
@@ -107,6 +121,18 @@ class ShipmentService
         $this->notificationService->notifyStatus($shipment->fresh(), $status);
 
         return $event;
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
+     */
+    private function blankToNull(array $data): array
+    {
+        return array_map(
+            fn (mixed $value): mixed => is_string($value) && trim($value) === '' ? null : $value,
+            $data,
+        );
     }
 
     /**

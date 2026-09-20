@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Track your shipment',
     'track_label' => 'Tracking number',
     'track_help' => 'Where do I find my tracking number?',
-    'preview_label' => 'Tracking preview',
     'current_status' => 'Current status',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Services',
 
+    // Tracking page
+    'amount' => 'Amount / quote',
+
+    // Network section
+    'network_title' => 'A global network, tracked at every step',
+    'network_text' => 'Wherever your parcel starts its journey, every scan is recorded and visible: from pickup to the sorting centre, right through to handover to the recipient.',
+    'network_point_1' => 'Status updated at every stage of the journey',
+    'network_point_2' => 'Recipient details masked on the public page',
+    'network_point_3' => 'Email notifications in the language of your choice',
 ];

@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => 'Se não for configurado nenhum servidor SMTP, os e-mails são registados localmente (modo de desenvolvimento).',
     'settings_saved_toast' => 'Definições guardadas.',
 
+    // Amount / quote
+    'field_amount' => 'Montante / orçamento',
+    'field_amount_hint' => 'Comunicado ao destinatário na página de rastreio e por e-mail.',
+    'quote_match' => 'Orçamento sugerido para :destination: :amount',
+    'quote_formula' => ':base + :per_kg por kg',
+    'quote_none' => 'Nenhuma tarifa definida para este destino: introduza o montante manualmente.',
+    'quote_apply' => 'Aplicar o orçamento',
+
+    // Email language
+    'field_mail_locale' => 'Idioma do e-mail',
+    'field_mail_locale_hint' => 'Idioma dos e-mails enviados para este envio.',
+
+    // Rates by destination
+    'nav_rates' => 'Tarifas',
+    'rates_title' => 'Tarifas por destino',
+    'rates_subtitle' => 'O orçamento sugerido ao criar um envio depende do destino e do peso.',
+    'add_rate' => 'Adicionar tarifa',
+    'edit_rate' => 'Editar tarifa',
+    'field_rate_destination' => 'Destino',
+    'field_rate_destination_hint' => 'País ou cidade procurado no campo «Destino» do envio (maiúsculas e acentos ignorados).',
+    'field_rate_base' => 'Montante base',
+    'field_rate_per_kg' => 'Montante por kg',
+    'rate_saved_toast' => 'Tarifa guardada.',
+    'rate_deleted_toast' => 'Tarifa eliminada.',
 ];

@@ -26,10 +26,15 @@ class ShipmentStatusNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    public const AUDIENCE_SENDER = 'sender';
+
+    public const AUDIENCE_RECIPIENT = 'recipient';
+
     public function __construct(
         public Shipment $shipment,
         public ShipmentStatus $status,
         public int $shipmentNotificationId,
+        public string $audience = self::AUDIENCE_SENDER,
     ) {}
 
     /**
@@ -42,7 +47,7 @@ class ShipmentStatusNotification extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): Mailable
     {
-        return (new ShipmentStatusMail($this->shipment, $this->status))
+        return (new ShipmentStatusMail($this->shipment, $this->status, $this->audience))
             ->to($notifiable->routeNotificationFor('mail', $this));
     }
 }

@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Suivre votre envoi',
     'track_label' => 'Numéro de suivi',
     'track_help' => 'Où trouver mon numéro de suivi ?',
-    'preview_label' => 'Aperçu du suivi',
     'current_status' => 'Statut actuel',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Services',
 
+    // Tracking page
+    'amount' => 'Montant / devis',
+
+    // Network section
+    'network_title' => 'Un réseau mondial, un suivi à chaque étape',
+    'network_text' => 'Où que parte votre colis, chaque passage est enregistré et visible : de l’enlèvement au centre de tri, jusqu’à la remise au destinataire.',
+    'network_point_1' => 'Statut mis à jour à chaque étape du trajet',
+    'network_point_2' => 'Coordonnées du destinataire masquées sur la page publique',
+    'network_point_3' => 'Notifications par e-mail dans la langue de votre choix',
 ];

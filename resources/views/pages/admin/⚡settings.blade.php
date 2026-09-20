@@ -125,14 +125,9 @@ new #[Title('Paramètres')] class extends Component {
                 <flux:input wire:model="tracking_prefix" :label="__('admin.field_tracking_prefix')" />
                 <flux:input wire:model="currency" :label="__('admin.field_currency')" maxlength="3" />
                 <flux:select wire:model="default_locale" :label="__('admin.field_default_locale')">
-                    <flux:select.option value="fr">Français</flux:select.option>
-                    <flux:select.option value="en">English</flux:select.option>
-                    <flux:select.option value="es">Español</flux:select.option>
-                    <flux:select.option value="de">Deutsch</flux:select.option>
-                    <flux:select.option value="it">Italiano</flux:select.option>
-                    <flux:select.option value="pt">Português</flux:select.option>
-                    <flux:select.option value="ro">Română</flux:select.option>
-                    <flux:select.option value="pl">Polski</flux:select.option>
+                    @foreach (\App\Support\Locales::NAMES as $code => $name)
+                        <flux:select.option :value="$code">{{ $name }}</flux:select.option>
+                    @endforeach
                 </flux:select>
             </div>
         </div>

@@ -24,6 +24,7 @@ class ShipmentStatusMail extends Mailable
     public function __construct(
         public Shipment $shipment,
         public ShipmentStatus $status,
+        public string $audience = 'sender',
     ) {}
 
     public function envelope(): Envelope
@@ -44,6 +45,7 @@ class ShipmentStatusMail extends Mailable
             with: [
                 'shipment' => $this->shipment->loadMissing(['sender', 'recipient']),
                 'status' => $this->status,
+                'audience' => $this->audience,
                 'settings' => Settings::current(),
                 'trackingUrl' => $this->shipment->trackingUrl(),
             ],

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Settings;
+use App\Support\Locales;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -11,16 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
 {
-    /**
-     * Available locales, kept in sync with the `lang/` directory.
-     */
-    public const AVAILABLE = ['fr', 'en', 'es', 'de', 'it', 'pt', 'ro', 'pl'];
-
     public function handle(Request $request, Closure $next): Response
     {
         $locale = Session::get('locale') ?? Settings::current()->default_locale ?? config('app.locale');
 
-        if (! in_array($locale, self::AVAILABLE, true)) {
+        if (! Locales::isSupported($locale)) {
             $locale = config('app.locale');
         }
 

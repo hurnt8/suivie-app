@@ -21,6 +21,7 @@ class ShipmentFactory extends Factory
     public function definition(): array
     {
         $createdAt = fake()->dateTimeBetween('-3 months', 'now');
+        $amount = fake()->boolean(75) ? fake()->randomFloat(2, 15, 950) : null;
 
         return [
             'tracking_code' => 'LVR-'.now()->year.'-'.Str::upper(Str::random(6)),
@@ -28,6 +29,8 @@ class ShipmentFactory extends Factory
             'recipient_id' => Recipient::factory(),
             'description' => fake()->randomElement(['Documents commerciaux', 'Pièces détachées', 'Vêtements', 'Matériel électronique', 'Échantillons', 'Produits cosmétiques']),
             'weight' => fake()->randomFloat(2, 0.2, 45),
+            'amount' => $amount,
+            'currency' => $amount !== null ? 'EUR' : null,
             'package_count' => fake()->numberBetween(1, 5),
             'shipment_type' => fake()->randomElement(ShipmentType::cases()),
             'service_type' => fake()->randomElement(ServiceType::cases()),

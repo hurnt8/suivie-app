@@ -56,6 +56,15 @@ class Settings extends Model
         ]);
     }
 
+    /**
+     * Drops the memoized row. Called between tests so a settings row created
+     * in one test never leaks into the next (the DB is rolled back, the static isn't).
+     */
+    public static function flush(): void
+    {
+        self::$cached = null;
+    }
+
     protected static function booted(): void
     {
         static::saved(fn () => self::$cached = null);

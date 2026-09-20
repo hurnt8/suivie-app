@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Urmărește-ți expedierea',
     'track_label' => 'Număr de urmărire',
     'track_help' => 'Unde găsesc numărul meu de urmărire?',
-    'preview_label' => 'Previzualizare urmărire',
     'current_status' => 'Status curent',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Servicii',
 
+    // Tracking page
+    'amount' => 'Sumă / ofertă',
+
+    // Network section
+    'network_title' => 'O rețea globală, urmărire la fiecare etapă',
+    'network_text' => 'Oriunde pornește coletul dvs., fiecare trecere este înregistrată și vizibilă: de la ridicare la centrul de sortare, până la predarea către destinatar.',
+    'network_point_1' => 'Stare actualizată la fiecare etapă a traseului',
+    'network_point_2' => 'Datele destinatarului sunt ascunse pe pagina publică',
+    'network_point_3' => 'Notificări prin e-mail în limba aleasă de dvs.',
 ];

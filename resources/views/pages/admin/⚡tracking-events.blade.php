@@ -61,7 +61,7 @@ new #[Title('Événements de suivi')] class extends Component {
                     @forelse ($this->events as $event)
                         <tr wire:key="event-{{ $event->id }}" class="transition-colors hover:bg-zinc-50/80 dark:hover:bg-white/[0.03]">
                             <td class="px-4 py-3">
-                                <a href="{{ route('admin.shipments.show', $event->shipment) }}" class="font-mono text-xs font-semibold text-brand-600 hover:underline dark:text-brand-400" wire:navigate>
+                                <a href="{{ route('admin.shipments.show', $event->shipment) }}" class="font-mono text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" wire:navigate>
                                     {{ $event->shipment->tracking_code }}
                                 </a>
                             </td>

@@ -1,6 +1,6 @@
 @props(['settings'])
 @php
-    $inkColor = '#0f172a';
+    $inkColor = '#1e1b4b'; // brand-950, same deep indigo as the site header
     $mutedColor = '#64748b';
 @endphp
 <!DOCTYPE html>

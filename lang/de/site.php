@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Sendung verfolgen',
     'track_label' => 'Sendungsnummer',
     'track_help' => 'Wo finde ich meine Sendungsnummer?',
-    'preview_label' => 'Vorschau der Sendungsverfolgung',
     'current_status' => 'Aktueller Status',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Leistungen',
 
+    // Tracking page
+    'amount' => 'Betrag / Angebot',
+
+    // Network section
+    'network_title' => 'Ein weltweites Netz, Verfolgung bei jedem Schritt',
+    'network_text' => 'Egal, wo Ihr Paket startet: Jeder Scan wird erfasst und ist sichtbar – von der Abholung über das Sortierzentrum bis zur Übergabe an den Empfänger.',
+    'network_point_1' => 'Status wird bei jedem Abschnitt der Reise aktualisiert',
+    'network_point_2' => 'Empfängerdaten sind auf der öffentlichen Seite verborgen',
+    'network_point_3' => 'E-Mail-Benachrichtigungen in der Sprache Ihrer Wahl',
 ];

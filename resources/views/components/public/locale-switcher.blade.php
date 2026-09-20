@@ -1,18 +1,5 @@
 @props(['tone' => 'default'])
 
-@php
-    $locales = [
-        'fr' => 'Français',
-        'en' => 'English',
-        'es' => 'Español',
-        'de' => 'Deutsch',
-        'it' => 'Italiano',
-        'pt' => 'Português',
-        'ro' => 'Română',
-        'pl' => 'Polski',
-    ];
-@endphp
-
 <flux:dropdown position="bottom" align="end">
     <flux:button
         size="sm"
@@ -25,7 +12,7 @@
     </flux:button>
 
     <flux:menu>
-        @foreach ($locales as $code => $label)
+        @foreach (\App\Support\Locales::NAMES as $code => $label)
             <flux:menu.item :href="route('locale.switch', $code)" :icon="app()->getLocale() === $code ? 'check' : null">
                 {{ $label }}
             </flux:menu.item>

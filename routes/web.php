@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\TrackingController;
-use App\Http\Middleware\SetLocale;
+use App\Support\Locales;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -16,7 +16,7 @@ Route::get('/tracking/{shipment:tracking_code}', [TrackingController::class, 'sh
     ->name('tracking.show');
 
 Route::get('/locale/{locale}', function (string $locale) {
-    if (in_array($locale, SetLocale::AVAILABLE, true)) {
+    if (Locales::isSupported($locale)) {
         session(['locale' => $locale]);
     }
 

@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => 'Jeśli nie skonfigurowano serwera SMTP, e-maile są zapisywane lokalnie (tryb deweloperski).',
     'settings_saved_toast' => 'Ustawienia zapisane.',
 
+    // Amount / quote
+    'field_amount' => 'Kwota / wycena',
+    'field_amount_hint' => 'Przekazywana odbiorcy na stronie śledzenia i e-mailem.',
+    'quote_match' => 'Proponowana wycena dla :destination: :amount',
+    'quote_formula' => ':base + :per_kg za kg',
+    'quote_none' => 'Brak taryfy dla tego miejsca docelowego: wpisz kwotę ręcznie.',
+    'quote_apply' => 'Zastosuj wycenę',
+
+    // Email language
+    'field_mail_locale' => 'Język e-maila',
+    'field_mail_locale_hint' => 'Język wiadomości e-mail wysyłanych dla tej przesyłki.',
+
+    // Rates by destination
+    'nav_rates' => 'Taryfy',
+    'rates_title' => 'Taryfy według miejsca docelowego',
+    'rates_subtitle' => 'Wycena proponowana przy tworzeniu przesyłki zależy od miejsca docelowego i wagi.',
+    'add_rate' => 'Dodaj taryfę',
+    'edit_rate' => 'Edytuj taryfę',
+    'field_rate_destination' => 'Miejsce docelowe',
+    'field_rate_destination_hint' => 'Kraj lub miasto wyszukiwane w polu „Miejsce docelowe” przesyłki (wielkość liter i znaki diakrytyczne są pomijane).',
+    'field_rate_base' => 'Kwota podstawowa',
+    'field_rate_per_kg' => 'Kwota za kg',
+    'rate_saved_toast' => 'Taryfa zapisana.',
+    'rate_deleted_toast' => 'Taryfa usunięta.',
 ];

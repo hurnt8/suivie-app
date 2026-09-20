@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Se o botão não funcionar, copie este link para o seu navegador:',
     'shipment_created_subject' => 'A sua encomenda :tracking_code foi registada — :company',
     'shipment_status_subject' => 'Atualização da sua encomenda :tracking_code: :status',
+
+    'sender' => 'Remetente',
+    'amount' => 'Montante / orçamento',
+    'intro_recipient' => ':sender está a enviar-lhe uma encomenda através de :company. Aqui estão os detalhes, o montante comunicado e a ligação para acompanhar o percurso.',
 ];

@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Se il pulsante non funziona, copia questo link nel tuo browser:',
     'shipment_created_subject' => 'Il tuo pacco :tracking_code è stato registrato — :company',
     'shipment_status_subject' => 'Aggiornamento sul tuo pacco :tracking_code: :status',
+
+    'sender' => 'Mittente',
+    'amount' => 'Importo / preventivo',
+    'intro_recipient' => ':sender ti sta inviando un pacco tramite :company. Ecco il riepilogo, l’importo comunicato e il link per seguirne il percorso.',
 ];

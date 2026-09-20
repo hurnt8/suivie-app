@@ -56,7 +56,7 @@
 
         <div class="flex items-center gap-3">
             <div class="hidden lg:block">
-                <flux:button href="{{ route('home') }}#track" variant="primary" color="orange" size="sm">
+                <flux:button href="{{ route('home') }}#track" variant="primary" size="sm">
                     {{ __('messages.track_button') }}
                 </flux:button>
             </div>
@@ -76,7 +76,7 @@
                     {{ $link['label'] }}
                 </a>
             @endforeach
-            <flux:button href="{{ route('home') }}#track" variant="primary" color="orange" class="mt-3 w-full">
+            <flux:button href="{{ route('home') }}#track" variant="primary" class="mt-3 w-full">
                 {{ __('messages.track_button') }}
             </flux:button>
         </nav>

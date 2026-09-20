@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => 'If no SMTP server is configured, emails are logged locally (development mode).',
     'settings_saved_toast' => 'Settings saved.',
 
+    // Amount / quote
+    'field_amount' => 'Amount / quote',
+    'field_amount_hint' => 'Shared with the recipient on the tracking page and by email.',
+    'quote_match' => 'Suggested quote for :destination: :amount',
+    'quote_formula' => ':base + :per_kg per kg',
+    'quote_none' => 'No rate defined for this destination: enter the amount manually.',
+    'quote_apply' => 'Apply quote',
+
+    // Email language
+    'field_mail_locale' => 'Email language',
+    'field_mail_locale_hint' => 'Language of the emails sent for this shipment.',
+
+    // Rates by destination
+    'nav_rates' => 'Rates',
+    'rates_title' => 'Rates by destination',
+    'rates_subtitle' => 'The quote suggested when creating a shipment depends on its destination and weight.',
+    'add_rate' => 'Add a rate',
+    'edit_rate' => 'Edit rate',
+    'field_rate_destination' => 'Destination',
+    'field_rate_destination_hint' => 'Country or city matched against the shipment’s “Destination” field (case and accents ignored).',
+    'field_rate_base' => 'Base amount',
+    'field_rate_per_kg' => 'Amount per kg',
+    'rate_saved_toast' => 'Rate saved.',
+    'rate_deleted_toast' => 'Rate deleted.',
 ];

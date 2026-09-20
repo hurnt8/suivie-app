@@ -166,4 +166,28 @@ return [
     'settings_mail_hint' => 'Dacă nu este configurat niciun server SMTP, e-mailurile sunt înregistrate local (mod de dezvoltare).',
     'settings_saved_toast' => 'Setări salvate.',
 
+    // Amount / quote
+    'field_amount' => 'Sumă / ofertă',
+    'field_amount_hint' => 'Comunicată destinatarului pe pagina de urmărire și prin e-mail.',
+    'quote_match' => 'Ofertă sugerată pentru :destination: :amount',
+    'quote_formula' => ':base + :per_kg pe kg',
+    'quote_none' => 'Nicio tarifă definită pentru această destinație: introdu suma manual.',
+    'quote_apply' => 'Aplică oferta',
+
+    // Email language
+    'field_mail_locale' => 'Limba e-mailului',
+    'field_mail_locale_hint' => 'Limba e-mailurilor trimise pentru această expediție.',
+
+    // Rates by destination
+    'nav_rates' => 'Tarife',
+    'rates_title' => 'Tarife pe destinație',
+    'rates_subtitle' => 'Oferta sugerată la crearea unei expediții depinde de destinație și de greutate.',
+    'add_rate' => 'Adaugă o tarifă',
+    'edit_rate' => 'Modifică tariful',
+    'field_rate_destination' => 'Destinație',
+    'field_rate_destination_hint' => 'Țara sau orașul căutat în câmpul „Destinație” al expediției (majusculele și diacriticele sunt ignorate).',
+    'field_rate_base' => 'Sumă de bază',
+    'field_rate_per_kg' => 'Sumă pe kg',
+    'rate_saved_toast' => 'Tarif salvat.',
+    'rate_deleted_toast' => 'Tarif șters.',
 ];

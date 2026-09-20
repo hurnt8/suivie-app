@@ -16,4 +16,8 @@ return [
     'link_fallback' => 'Jeśli przycisk nie działa, skopiuj ten link do przeglądarki:',
     'shipment_created_subject' => 'Twoja paczka :tracking_code została zarejestrowana — :company',
     'shipment_status_subject' => 'Aktualizacja paczki :tracking_code: :status',
+
+    'sender' => 'Nadawca',
+    'amount' => 'Kwota / wycena',
+    'intro_recipient' => ':sender wysyła do Ciebie paczkę przez :company. Oto szczegóły, przekazana kwota i link do śledzenia przesyłki.',
 ];

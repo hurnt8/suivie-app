@@ -11,7 +11,6 @@ return [
     'track_card_title' => 'Siga su envío',
     'track_label' => 'Número de seguimiento',
     'track_help' => '¿Dónde encuentro mi número de seguimiento?',
-    'preview_label' => 'Vista previa del seguimiento',
     'current_status' => 'Estado actual',
 
     // Quick actions
@@ -33,4 +32,13 @@ return [
     // Footer
     'footer_services' => 'Servicios',
 
+    // Tracking page
+    'amount' => 'Importe / presupuesto',
+
+    // Network section
+    'network_title' => 'Una red mundial, seguimiento en cada etapa',
+    'network_text' => 'Salga de donde salga su paquete, cada paso queda registrado y visible: desde la recogida hasta el centro de clasificación y la entrega al destinatario.',
+    'network_point_1' => 'Estado actualizado en cada etapa del trayecto',
+    'network_point_2' => 'Datos del destinatario ocultos en la página pública',
+    'network_point_3' => 'Notificaciones por correo en el idioma que elija',
 ];
