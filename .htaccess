@@ -1,0 +1,18 @@
+# Project-root .htaccess
+#
+# Only relevant when the web server's document root is the project folder itself (typical on shared hosting such as
+# Hostinger). It sends every request into public/, so that:
+#   - /build/…, /images/…, /favicon.svg, /robots.txt resolve to public/build/…, public/images/… and so on;
+#   - clean URLs (/login, /tracking/CODE, /livewire-…/livewire.js, /flux/flux.js) reach Laravel's front controller;
+#   - .env, vendor/, storage/logs, composer.lock, app/… can never be requested from the browser.
+#
+# The cleanest setup is to point the document root at public/ instead — then this file is simply ignored.
+# Keep any lines your host added to an existing root .htaccess (PHP version handler, etc.) and put these above them.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Requests that already point inside public/ are left alone (this also prevents a rewrite loop).
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
