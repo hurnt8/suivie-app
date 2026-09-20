@@ -1,0 +1,14 @@
+Photographs used on the public site — all from Pexels (https://www.pexels.com), free to use under the Pexels License
+(https://www.pexels.com/license/): no attribution required, commercial use allowed. Listed here for traceability.
+
+hero-port.jpg              https://www.pexels.com/photo/33587048/   container terminal cranes at sunset
+cta-port-night.jpg         https://www.pexels.com/photo/16229885/   aerial night view of a container ship being loaded
+tracking-truck.jpg         https://www.pexels.com/photo/9754798/    truck carrying a container on a tree-lined road
+network-warehouse.jpg      https://www.pexels.com/photo/4487383/    two workers walking along a warehouse aisle
+service-standard.jpg       https://www.pexels.com/photo/6869065/    delivery driver handing over a parcel from a van
+service-express.jpg        https://www.pexels.com/photo/33411898/   motorcycle courier riding fast with packages
+service-economy.jpg        https://www.pexels.com/photo/10834810/   stacked cardboard boxes in a warehouse
+service-international.jpg  https://www.pexels.com/photo/6595774/    aerial view of a container port and ship
+
+Files were downloaded at web-friendly sizes from images.pexels.com (no watermark, no modification other than server-side resizing).
+No carrier brand (FedEx, UPS, DHL…) is shown as the subject of any picture.

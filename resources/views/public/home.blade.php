@@ -34,16 +34,14 @@
     {{-- Hero --}}
     <section class="relative isolate overflow-hidden bg-brand-950 text-white">
         <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-950 via-[#241a63] to-brand-900"></div>
-            <div class="absolute -top-44 -right-44 size-[40rem] rounded-full border border-white/10"></div>
-            <div class="absolute -top-24 -right-24 size-[30rem] rounded-full border border-white/10"></div>
-            <div class="absolute top-1/3 -right-10 size-72 rounded-full bg-orange-500/15 blur-3xl"></div>
-            <div class="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:28px_28px]"></div>
+            <img src="{{ asset('images/photos/hero-port.jpg') }}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="absolute inset-0 size-full object-cover object-[75%_center]">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-950/90 via-brand-950/80 to-brand-950/70 lg:bg-gradient-to-r lg:from-brand-950 lg:via-brand-950/80 lg:to-brand-950/10"></div>
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-950/60 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent"></div>
         </div>
 
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-14 pb-32 sm:px-6 sm:pt-20 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:pt-24 lg:pb-40">
-            <div class="lg:col-span-7">
+        <div class="mx-auto max-w-7xl px-4 pt-14 pb-32 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24 lg:pb-40">
+            <div class="lg:max-w-[58%]">
                 <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-brand-100 ring-1 ring-white/15">
                     <span class="size-1.5 rounded-full bg-orange-400"></span>
                     {{ __('messages.hero_badge') }}
@@ -103,9 +101,6 @@
                 </ul>
             </div>
 
-            <div class="hidden lg:col-span-5 lg:block">
-                <x-public.art.hero-scene class="mx-auto h-auto w-full max-w-[34rem] drop-shadow-2xl" />
-            </div>
         </div>
     </section>
 
@@ -146,9 +141,17 @@
 
             <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach (\App\Enums\ServiceType::cases() as $service)
-                    <div class="card-elegant flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant-lg)]">
-                        <div class="relative bg-gradient-to-br from-brand-900 to-brand-950">
-                            <x-public.art.service :type="$service->value" class="block h-auto w-full" />
+                    <div class="group card-elegant flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant-lg)]">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-brand-900">
+                            <img
+                                src="{{ asset('images/photos/service-'.$service->value.'.jpg') }}"
+                                alt=""
+                                width="900"
+                                height="562"
+                                loading="lazy"
+                                decoding="async"
+                                class="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            >
                             <span class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-500 to-orange-500"></span>
                         </div>
                         <div class="flex flex-1 flex-col p-6">
@@ -196,7 +199,7 @@
         <div class="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
             <div class="relative pb-6">
                 <div class="overflow-hidden rounded-3xl shadow-[var(--shadow-elegant-lg)] ring-1 ring-black/5 dark:ring-white/10">
-                    <x-public.art.network class="block h-auto w-full" />
+                    <img src="{{ asset('images/photos/network-warehouse.jpg') }}" alt="" width="1200" height="800" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover">
                 </div>
 
                 <div class="absolute bottom-0 left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-zinc-900 shadow-xl ring-1 ring-black/5 sm:left-8 dark:bg-zinc-800 dark:text-white dark:ring-white/10" aria-hidden="true">
@@ -244,15 +247,13 @@
     </section>
 
     {{-- CTA --}}
-    <section class="relative isolate overflow-hidden bg-brand-950 py-16 sm:py-20">
+    <section class="relative isolate overflow-hidden bg-brand-950 py-20 sm:py-28">
         <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-[#241a63] to-brand-900"></div>
-            <div class="absolute -right-24 -bottom-40 size-[28rem] rounded-full border border-white/10"></div>
-            <div class="absolute -right-4 -bottom-24 size-72 rounded-full bg-orange-500/15 blur-3xl"></div>
-            <div class="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            <img src="{{ asset('images/photos/cta-port-night.jpg') }}" alt="" width="1600" height="760" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/30"></div>
         </div>
 
-        <div class="mx-auto flex max-w-7xl items-center justify-between gap-10 px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div>
                 <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">{{ __('messages.cta_title') }}</h2>
                 <p class="mt-2 max-w-xl text-brand-100/80">{{ __('messages.cta_subtitle') }}</p>
@@ -266,8 +267,6 @@
                     {{ __('messages.cta_button') }}
                 </flux:button>
             </div>
-
-            <x-public.art.parcels class="hidden h-56 w-auto shrink-0 md:block" />
         </div>
     </section>
 

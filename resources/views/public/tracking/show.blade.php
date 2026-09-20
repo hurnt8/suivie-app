@@ -29,16 +29,12 @@
         {{-- Header band --}}
         <section class="relative isolate overflow-hidden bg-brand-950 pt-10 pb-28 text-white sm:pt-14">
             <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-                <div class="absolute inset-0 bg-gradient-to-br from-brand-950 via-[#241a63] to-brand-900"></div>
-                <div class="absolute -top-40 -right-40 size-[34rem] rounded-full border border-white/10"></div>
-                <div class="absolute -top-16 -right-16 size-[24rem] rounded-full border border-white/10"></div>
-                <div class="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:26px_26px]"></div>
+                <img src="{{ asset('images/photos/tracking-truck.jpg') }}" alt="" width="1600" height="600" decoding="async" class="absolute inset-0 size-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/90 to-brand-950/60"></div>
                 <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent"></div>
             </div>
 
-            <div class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <x-public.art.parcels class="pointer-events-none absolute -top-12 right-6 hidden h-28 w-auto opacity-90 lg:block" />
-
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                 <a href="{{ route('home') }}#track" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-100/80 transition-colors hover:text-white">
                     <flux:icon.arrow-left class="size-4" />
                     {{ __('messages.nav_track') }}
