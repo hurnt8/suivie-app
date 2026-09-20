@@ -43,6 +43,9 @@ return [
     'shipments_count' => 'Expéditions',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
+    'actions' => 'Actions',
+    'edit' => 'Modifier',
+    'delete' => 'Supprimer',
     'confirm_delete' => 'Confirmez-vous la suppression ?',
     'search_placeholder' => 'Rechercher…',
 
@@ -55,6 +58,10 @@ return [
     'filter_all_services' => 'Tous les services',
     'filter_country' => 'Pays (origine ou destination)',
     'filter_reset' => 'Réinitialiser les filtres',
+    'filters' => 'Filtres',
+    'filter_all' => 'Tous',
+    'filter_date_from' => 'Créée à partir du',
+    'filter_date_to' => 'Créée jusqu’au',
     'view_public_page' => 'Voir la page publique',
 
     // Create shipment

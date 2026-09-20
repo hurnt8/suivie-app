@@ -108,6 +108,146 @@ select:focus[data-flux-control] {
     }
 }
 
+/*
+ * Responsive tables. Wrap the <table> in an element with `table-card` (it becomes a size container), give the
+ * <table> `table-stack` and, on each <td>:
+ *   data-label="…"  → the column name shown next to the value once stacked
+ *   cell-title      → the card's heading (top-left)
+ *   cell-aside      → a badge or action buttons, top-right of the card
+ *   cell-actions    → a full-width row of buttons at the bottom of the card
+ * The switch depends on the width of the *container*, not of the screen — so it accounts for the admin sidebar:
+ * from 56rem (896px) up it is a regular table; below, every row becomes a card and the header row disappears.
+ * Between 34rem and 56rem (tablets) labels get a fixed width and values sit next to them; below 34rem (phones)
+ * label and value are pushed to opposite edges.
+ * (Plain CSS, outside any @layer, so it wins over the px-4/py-3 utilities on the cells.)
+ */
+.table-card {
+    container-type: inline-size;
+}
+
+@container (max-width: 55.9375rem) {
+    .table-stack,
+    .table-stack tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .table-stack thead {
+        display: none;
+    }
+
+    /* Title column: as wide as its content (never squeezed below it); aside column: the rest, never below its own
+       minimum — so a long status badge wraps instead of running over the tracking number. */
+    .table-stack tbody tr {
+        display: grid;
+        grid-template-columns: minmax(auto, max-content) minmax(min-content, 1fr);
+        align-items: start;
+        gap: 0.5rem 0.75rem;
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-zinc-100);
+    }
+
+    .table-stack tbody tr:last-child {
+        border-bottom: 0;
+    }
+
+    .table-stack td {
+        display: flex;
+        grid-column: 1 / -1;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        min-width: 0;
+        padding: 0;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+    .table-stack td[data-label]::before {
+        content: attr(data-label);
+        flex: none;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-align: left;
+        text-transform: uppercase;
+        color: var(--color-zinc-400);
+    }
+
+    .table-stack td.cell-title {
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .table-stack td.cell-aside {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    /* Flux badges are `nowrap` by default; on a phone a long status must be allowed to wrap. */
+    .table-stack td.cell-aside > * {
+        max-width: 100%;
+        text-align: right;
+        white-space: normal;
+    }
+
+    .table-stack td.cell-actions {
+        justify-content: flex-end;
+    }
+
+    .table-stack td[colspan] {
+        display: block;
+        text-align: center;
+    }
+
+    .dark .table-stack tbody tr {
+        border-bottom-color: rgb(255 255 255 / 0.06);
+    }
+}
+
+/* In the wide table layout a long value (a route) is capped at two lines instead of stretching the row. */
+@container (min-width: 56rem) {
+    .table-stack td.cell-clamp {
+        max-width: 15rem;
+    }
+
+    .table-stack td.cell-clamp > span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+}
+
+/* Tablet width: a fixed-width label column with the value right beside it reads better than opposite edges. */
+@container (min-width: 34rem) and (max-width: 55.9375rem) {
+    .table-stack td:not(.cell-title, .cell-aside, [colspan]) {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .table-stack td[data-label]::before {
+        width: 10rem;
+    }
+}
+
+/* A horizontally scrollable row (status chips) without the scrollbar. */
+.no-scrollbar {
+    scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

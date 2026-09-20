@@ -100,37 +100,35 @@ new #[Title('Tarifs par destination')] class extends Component {
             <flux:heading size="xl">{{ __('admin.rates_title') }}</flux:heading>
             <flux:subheading>{{ __('admin.rates_subtitle') }}</flux:subheading>
         </div>
-        <flux:button variant="primary" icon="plus" wire:click="create">{{ __('admin.add_rate') }}</flux:button>
+        <flux:button variant="primary" icon="plus" wire:click="create" class="w-full sm:w-auto">{{ __('admin.add_rate') }}</flux:button>
     </div>
 
-    <div class="card-elegant overflow-hidden">
-        <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-                <thead class="table-head-elegant">
-                    <tr class="text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
-                        <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_destination') }}</th>
-                        <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_base') }}</th>
-                        <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_per_kg') }}</th>
-                        <th class="px-4 py-3"></th>
+    <div class="card-elegant table-card overflow-hidden">
+        <table class="table-stack w-full text-sm">
+            <thead class="table-head-elegant">
+                <tr class="text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+                    <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_destination') }}</th>
+                    <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_base') }}</th>
+                    <th class="px-4 py-3 font-semibold">{{ __('admin.field_rate_per_kg') }}</th>
+                    <th class="px-4 py-3"><span class="sr-only">{{ __('admin.actions') }}</span></th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100 dark:divide-white/5">
+                @forelse ($this->rates as $rate)
+                    <tr wire:key="rate-{{ $rate->id }}" class="transition-colors hover:bg-zinc-50/80 dark:hover:bg-white/[0.03]">
+                        <td class="cell-title px-4 py-3.5 font-medium text-zinc-800 dark:text-zinc-100">{{ $rate->name }}</td>
+                        <td class="px-4 py-3.5 text-zinc-600 tabular-nums dark:text-zinc-300" data-label="{{ __('admin.field_rate_base') }}">{{ $this->money($rate->base_amount) }}</td>
+                        <td class="px-4 py-3.5 text-zinc-600 tabular-nums dark:text-zinc-300" data-label="{{ __('admin.field_rate_per_kg') }}">{{ $this->money($rate->per_kg_amount) }}</td>
+                        <td class="cell-aside px-4 py-2 text-right whitespace-nowrap">
+                            <flux:button size="sm" variant="ghost" icon="pencil" wire:click="edit({{ $rate->id }})" :aria-label="__('admin.edit')" />
+                            <flux:button size="sm" variant="ghost" icon="trash" wire:click="delete({{ $rate->id }})" wire:confirm="{{ __('admin.confirm_delete') }}" :aria-label="__('admin.delete')" />
+                        </td>
                     </tr>
-                </thead>
-                <tbody class="divide-y divide-zinc-100 dark:divide-white/5">
-                    @forelse ($this->rates as $rate)
-                        <tr wire:key="rate-{{ $rate->id }}" class="transition-colors hover:bg-zinc-50/80 dark:hover:bg-white/[0.03]">
-                            <td class="px-4 py-3 font-medium text-zinc-800 dark:text-zinc-100">{{ $rate->name }}</td>
-                            <td class="px-4 py-3 text-zinc-600 tabular-nums dark:text-zinc-300">{{ $this->money($rate->base_amount) }}</td>
-                            <td class="px-4 py-3 text-zinc-600 tabular-nums dark:text-zinc-300">{{ $this->money($rate->per_kg_amount) }}</td>
-                            <td class="px-4 py-3 text-right">
-                                <flux:button size="sm" variant="ghost" icon="pencil" wire:click="edit({{ $rate->id }})" />
-                                <flux:button size="sm" variant="ghost" icon="trash" wire:click="delete({{ $rate->id }})" wire:confirm="{{ __('admin.confirm_delete') }}" />
-                            </td>
-                        </tr>
-                    @empty
-                        <tr><td colspan="4" class="px-4 py-10 text-center text-zinc-400">{{ __('admin.no_results') }}</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                @empty
+                    <tr><td colspan="4" class="px-4 py-12 text-center text-zinc-400">{{ __('admin.no_results') }}</td></tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 
     <flux:modal name="rate-form" class="w-full max-w-lg">

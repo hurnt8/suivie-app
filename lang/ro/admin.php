@@ -43,6 +43,9 @@ return [
     'shipments_count' => 'Expedieri',
     'save' => 'Salvează',
     'cancel' => 'Anulează',
+    'actions' => 'Acțiuni',
+    'edit' => 'Modifică',
+    'delete' => 'Șterge',
     'confirm_delete' => 'Confirmați ștergerea?',
     'search_placeholder' => 'Căutare…',
 
@@ -55,6 +58,10 @@ return [
     'filter_all_services' => 'Toate serviciile',
     'filter_country' => 'Țară (origine sau destinație)',
     'filter_reset' => 'Resetează filtrele',
+    'filters' => 'Filtre',
+    'filter_all' => 'Toate',
+    'filter_date_from' => 'Creată de la',
+    'filter_date_to' => 'Creată până la',
     'view_public_page' => 'Vezi pagina publică',
 
     // Create shipment

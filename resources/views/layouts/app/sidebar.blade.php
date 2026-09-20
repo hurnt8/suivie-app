@@ -66,6 +66,13 @@
         <flux:header class="dark border-b border-white/10 bg-brand-950 lg:hidden">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
+            <a href="{{ route('admin.dashboard') }}" class="ms-1 inline-flex min-w-0 items-center gap-2 text-white" wire:navigate>
+                <span class="flex size-7 shrink-0 items-center justify-center rounded-md bg-brand-600">
+                    <x-app-logo-icon class="size-4" />
+                </span>
+                <span class="truncate text-sm font-bold tracking-tight">{{ \App\Models\Settings::current()->company_name ?: config('app.name') }}</span>
+            </a>
+
             <flux:spacer />
 
             <flux:dropdown position="top" align="end">

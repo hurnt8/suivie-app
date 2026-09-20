@@ -1,8 +1,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+@php($siteName = \App\Models\Settings::current()->company_name ?: config('app.name', 'Laravel'))
+
 <title>
-    {{ filled($title ?? null) ? $title.' - '.config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
+    {{ filled($title ?? null) ? $title.' - '.$siteName : $siteName }}
 </title>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

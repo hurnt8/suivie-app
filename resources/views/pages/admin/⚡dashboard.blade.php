@@ -83,7 +83,7 @@ new #[Title('Tableau de bord')] class extends Component {
         @endforeach
     </div>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <div class="table-card grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div class="card-elegant p-5 lg:col-span-2">
             <div class="mb-4 flex items-center justify-between">
                 <flux:heading size="lg">{{ __('admin.recent_shipments') }}</flux:heading>
@@ -92,34 +92,32 @@ new #[Title('Tableau de bord')] class extends Component {
                 </flux:button>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="table-head-elegant rounded-lg text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
-                            <th class="rounded-l-lg px-3 py-2.5 font-semibold">{{ __('admin.tracking_number') }}</th>
-                            <th class="px-3 py-2.5 font-semibold">{{ __('admin.recipient') }}</th>
-                            <th class="rounded-r-lg px-3 py-2.5 font-semibold">{{ __('admin.status') }}</th>
+            <table class="table-stack w-full text-sm">
+                <thead>
+                    <tr class="table-head-elegant text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+                        <th class="rounded-l-lg px-3 py-2.5 font-semibold">{{ __('admin.tracking_number') }}</th>
+                        <th class="px-3 py-2.5 font-semibold">{{ __('admin.recipient') }}</th>
+                        <th class="rounded-r-lg px-3 py-2.5 font-semibold">{{ __('admin.status') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($this->recentShipments as $shipment)
+                        <tr class="border-b border-zinc-100 last:border-0 dark:border-white/5">
+                            <td class="cell-title px-3 py-3 whitespace-nowrap">
+                                <a href="{{ route('admin.shipments.show', $shipment) }}" class="font-mono text-[13px] font-semibold text-brand-700 hover:underline dark:text-brand-300" wire:navigate>
+                                    {{ $shipment->tracking_code }}
+                                </a>
+                            </td>
+                            <td class="px-3 py-3 text-zinc-600 dark:text-zinc-300" data-label="{{ __('admin.recipient') }}">{{ $shipment->recipient->name }}</td>
+                            <td class="cell-aside px-3 py-3">
+                                <flux:badge :color="$shipment->current_status->color()" size="sm" class="md:whitespace-nowrap">{{ $shipment->current_status->label() }}</flux:badge>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($this->recentShipments as $shipment)
-                            <tr class="border-b border-zinc-100 last:border-0 dark:border-white/5">
-                                <td class="px-3 py-3">
-                                    <a href="{{ route('admin.shipments.show', $shipment) }}" class="font-mono text-xs font-semibold text-brand-700 hover:underline dark:text-brand-300" wire:navigate>
-                                        {{ $shipment->tracking_code }}
-                                    </a>
-                                </td>
-                                <td class="px-3 py-3 text-zinc-600 dark:text-zinc-300">{{ $shipment->recipient->name }}</td>
-                                <td class="px-3 py-3">
-                                    <flux:badge :color="$shipment->current_status->color()" size="sm">{{ $shipment->current_status->label() }}</flux:badge>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr><td colspan="3" class="py-6 text-center text-zinc-400">{{ __('admin.no_shipments') }}</td></tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
+                    @empty
+                        <tr><td colspan="3" class="py-6 text-center text-zinc-400">{{ __('admin.no_shipments') }}</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
 
         <div class="card-elegant p-5">
