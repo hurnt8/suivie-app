@@ -30,7 +30,8 @@
         <section class="relative isolate overflow-hidden bg-brand-950 pt-10 pb-28 text-white sm:pt-14">
             <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
                 <img src="{{ asset('images/photos/tracking-truck.jpg') }}" alt="" width="1600" height="600" decoding="async" class="absolute inset-0 size-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/90 to-brand-950/60"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/75 to-brand-950/15"></div>
+                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-950/70 to-transparent"></div>
                 <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent"></div>
             </div>
 
