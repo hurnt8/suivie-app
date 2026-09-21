@@ -3,6 +3,7 @@
 # Only relevant when the web server's document root is the project folder itself (typical on shared hosting such as
 # Hostinger). It sends every request into public/, so that:
 #   - /build/…, /images/…, /favicon.svg, /robots.txt resolve to public/build/…, public/images/… and so on;
+#   - /storage/… resolves through public/storage (the symlink to storage/app/public/, e.g. an uploaded logo);
 #   - clean URLs (/login, /tracking/CODE, /livewire-…/livewire.js, /flux/flux.js) reach Laravel's front controller;
 #   - .env, vendor/, storage/logs, composer.lock, app/… can never be requested from the browser.
 #
