@@ -40,7 +40,12 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // Writes straight into public/storage instead of storage/app/public + a symlink: some shared
+            // hosts (this project's included) disable PHP's symlink(), which leaves the usual
+            // `php artisan storage:link` setup with a dead link and every uploaded file (e.g. the
+            // company logo) 403/404ing. A real directory works everywhere, at the cost of the two
+            // copies staying separate if something is ever written straight to storage/app/public.
+            'root' => public_path('storage'),
             'url' => rtrim((string) env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,
