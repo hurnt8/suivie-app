@@ -11,13 +11,15 @@
             <div class="lg:col-span-4">
                 <a href="{{ route('home') }}" class="inline-flex items-center gap-2.5" wire:navigate>
                     @if (filled($settings->logo_path ?? null))
-                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo_path) }}" alt="{{ $company }}" class="size-9 rounded-lg object-contain">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo_path) }}" alt="{{ $company }}" class="h-14 w-auto max-w-[240px] object-contain">
                     @else
                         <span class="flex size-9 items-center justify-center rounded-lg bg-brand-600 text-white">
                             <x-app-logo-icon class="size-5" />
                         </span>
                     @endif
-                    <span class="text-lg font-extrabold tracking-tight text-white">{{ $company }}</span>
+                    @unless (filled($settings->logo_path ?? null))
+                        <span class="text-lg font-extrabold tracking-tight text-white">{{ $company }}</span>
+                    @endunless
                 </a>
                 <p class="mt-5 max-w-sm text-sm leading-relaxed">
                     {{ __('messages.footer_tagline') }}

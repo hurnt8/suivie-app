@@ -41,13 +41,15 @@
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="{{ route('home') }}" class="flex items-center gap-2.5" wire:navigate>
             @if (filled($settings->logo_path ?? null))
-                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo_path) }}" alt="{{ $company }}" class="size-9 rounded-lg object-contain">
+                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo_path) }}" alt="{{ $company }}" class="h-12 w-auto max-w-[220px] object-contain">
             @else
                 <span class="flex size-9 items-center justify-center rounded-lg bg-brand-600 text-white shadow-[0_6px_16px_-6px_var(--color-brand-600)]">
                     <x-app-logo-icon class="size-5" />
                 </span>
             @endif
-            <span class="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">{{ $company }}</span>
+            @unless (filled($settings->logo_path ?? null))
+                <span class="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">{{ $company }}</span>
+            @endunless
         </a>
 
         <nav class="hidden h-full items-stretch lg:flex" aria-label="{{ $company }}">
