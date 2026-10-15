@@ -46,7 +46,8 @@ return [
             // company logo) 403/404ing. A real directory works everywhere, at the cost of the two
             // copies staying separate if something is ever written straight to storage/app/public.
             'root' => public_path('storage'),
-            'url' => rtrim((string) env('APP_URL', 'http://localhost'), '/').'/storage',
+            // Relative URL so images load whatever host/port the app is served from (APP_URL may differ).
+            'url' => '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
