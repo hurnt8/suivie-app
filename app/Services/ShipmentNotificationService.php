@@ -13,28 +13,11 @@ use Illuminate\Support\Facades\Notification;
 class ShipmentNotificationService
 {
     /**
-     * Statuses that warrant emailing the sender (§10 of the spec). Silent,
-     * non-customer-facing statuses (pending, sorting_center, customs,
-     * returned, cancelled) are intentionally excluded.
-     *
-     * @var array<int, ShipmentStatus>
+     * Every status change emails the sender: the customer is kept informed at
+     * each step of the shipment, including sorting, customs, return and cancellation.
      */
-    private const NOTIFIABLE_STATUSES = [
-        ShipmentStatus::Registered,
-        ShipmentStatus::PickedUp,
-        ShipmentStatus::InTransit,
-        ShipmentStatus::DestinationCenter,
-        ShipmentStatus::OutForDelivery,
-        ShipmentStatus::Delivered,
-        ShipmentStatus::Delayed,
-    ];
-
     public function notifyStatus(Shipment $shipment, ShipmentStatus $status): void
     {
-        if (! in_array($status, self::NOTIFIABLE_STATUSES, true)) {
-            return;
-        }
-
         $shipment->loadMissing(['sender', 'recipient']);
 
         $this->send($shipment, $status, $shipment->sender->email, ShipmentStatusNotification::AUDIENCE_SENDER);
