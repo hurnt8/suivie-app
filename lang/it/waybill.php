@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Bolla di spedizione',
+    'tracking_number' => 'Numero di tracciamento',
+    'sender' => 'Mittente',
+    'recipient' => 'Destinatario',
+    'details' => 'Dettagli della spedizione',
+    'origin' => 'Origine',
+    'destination' => 'Destinazione',
+    'shipment_type' => 'Tipo di spedizione',
+    'service' => 'Servizio',
+    'packages' => 'Numero di colli',
+    'weight' => 'Peso',
+    'content' => 'Contenuto',
+    'estimated_delivery' => 'Consegna stimata',
+    'status' => 'Stato attuale',
+    'instructions' => 'Istruzioni',
+    'billing' => 'Fatturazione',
+    'amount_due' => 'Importo a carico del destinatario',
+    'tracking_online' => 'Tracciamento online',
+    'thanks' => 'Grazie per la fiducia',
+    'phone' => 'Tel',
+    'back' => 'Indietro',
+    'print' => 'Stampa / Salva come PDF',
+    'button' => 'Bolla / Fattura',
+];

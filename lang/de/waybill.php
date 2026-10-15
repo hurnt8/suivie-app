@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Versandschein',
+    'tracking_number' => 'Sendungsnummer',
+    'sender' => 'Absender',
+    'recipient' => 'Empfänger',
+    'details' => 'Sendungsdetails',
+    'origin' => 'Herkunft',
+    'destination' => 'Ziel',
+    'shipment_type' => 'Sendungsart',
+    'service' => 'Service',
+    'packages' => 'Anzahl der Pakete',
+    'weight' => 'Gewicht',
+    'content' => 'Inhalt',
+    'estimated_delivery' => 'Voraussichtliche Zustellung',
+    'status' => 'Aktueller Status',
+    'instructions' => 'Anweisungen',
+    'billing' => 'Rechnung',
+    'amount_due' => 'Vom Empfänger zu zahlender Betrag',
+    'tracking_online' => 'Online verfolgen',
+    'thanks' => 'Vielen Dank für Ihr Vertrauen',
+    'phone' => 'Tel',
+    'back' => 'Zurück',
+    'print' => 'Drucken / Als PDF speichern',
+    'button' => 'Versandschein / Rechnung',
+];

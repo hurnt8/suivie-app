@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Shipping waybill',
+    'tracking_number' => 'Tracking number',
+    'sender' => 'Sender',
+    'recipient' => 'Recipient',
+    'details' => 'Shipment details',
+    'origin' => 'Origin',
+    'destination' => 'Destination',
+    'shipment_type' => 'Shipment type',
+    'service' => 'Service',
+    'packages' => 'Number of packages',
+    'weight' => 'Weight',
+    'content' => 'Contents',
+    'estimated_delivery' => 'Estimated delivery',
+    'status' => 'Current status',
+    'instructions' => 'Instructions',
+    'billing' => 'Billing',
+    'amount_due' => 'Amount to be paid by the recipient',
+    'tracking_online' => 'Track online',
+    'thanks' => 'Thank you for your trust',
+    'phone' => 'Tel',
+    'back' => 'Back',
+    'print' => 'Print / Save as PDF',
+    'button' => 'Waybill / Invoice',
+];

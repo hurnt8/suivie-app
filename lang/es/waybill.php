@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Albarán de envío',
+    'tracking_number' => 'Número de seguimiento',
+    'sender' => 'Remitente',
+    'recipient' => 'Destinatario',
+    'details' => 'Detalles del envío',
+    'origin' => 'Origen',
+    'destination' => 'Destino',
+    'shipment_type' => 'Tipo de envío',
+    'service' => 'Servicio',
+    'packages' => 'Número de bultos',
+    'weight' => 'Peso',
+    'content' => 'Contenido',
+    'estimated_delivery' => 'Entrega estimada',
+    'status' => 'Estado actual',
+    'instructions' => 'Instrucciones',
+    'billing' => 'Facturación',
+    'amount_due' => 'Importe a pagar por el destinatario',
+    'tracking_online' => 'Seguimiento en línea',
+    'thanks' => 'Gracias por su confianza',
+    'phone' => 'Tel',
+    'back' => 'Volver',
+    'print' => 'Imprimir / Guardar como PDF',
+    'button' => 'Albarán / Factura',
+];

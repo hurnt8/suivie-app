@@ -7,7 +7,18 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::livewire('shipments', 'pages::admin.shipments.⚡index')->name('shipments.index');
     Route::livewire('shipments/create', 'pages::admin.shipments.⚡create')->name('shipments.create');
-    Route::livewire('shipments/{shipment:tracking_code}', 'pages::admin.shipments.⚡show')->name('shipments.show');
+    Route::get('shipments/{shipment:tracking_code}/waybill', function (\App\Models\Shipment $shipment) {
+        $shipment->loadMissing(['sender', 'recipient']);
+
+        // The document is shown in the language chosen for this shipment (same as its emails).
+        app()->setLocale($shipment->mailLocale());
+
+        return view('shipments.waybill', [
+            'shipment' => $shipment,
+            'settings' => \App\Models\Settings::current(),
+        ]);
+    })->name('shipments.waybill');
+    Route::livewire('shipments/{shipment:tracking_code}','pages::admin.shipments.⚡show')->name('shipments.show');
 
     Route::livewire('senders', 'pages::admin.senders.⚡index')->name('senders.index');
     Route::livewire('recipients', 'pages::admin.recipients.⚡index')->name('recipients.index');

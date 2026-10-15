@@ -7,7 +7,9 @@ use App\Models\Settings;
 use App\Models\Shipment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Support\WaybillPdf;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -42,6 +44,32 @@ class ShipmentStatusMail extends Mailable
             subject: $subject,
             replyTo: filled($replyTo) ? [new Address($replyTo, $company)] : [],
         );
+    }
+
+    /**
+     * The waybill/invoice PDF is attached to every shipment email. A failure to
+     * build it (or dompdf not installed yet) must never prevent the email itself.
+     *
+     * @return array<int, Attachment>
+     */
+    public function attachments(): array
+    {
+        if (! WaybillPdf::available()) {
+            return [];
+        }
+
+        try {
+            $pdf = WaybillPdf::render($this->shipment);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return [];
+        }
+
+        return [
+            Attachment::fromData(fn () => $pdf, 'waybill-'.$this->shipment->tracking_code.'.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 
     public function content(): Content

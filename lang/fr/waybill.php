@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Bordereau d\'expédition',
+    'tracking_number' => 'Numéro de suivi',
+    'sender' => 'Expéditeur',
+    'recipient' => 'Destinataire',
+    'details' => 'Détails de l\'envoi',
+    'origin' => 'Origine',
+    'destination' => 'Destination',
+    'shipment_type' => 'Type d\'envoi',
+    'service' => 'Service',
+    'packages' => 'Nombre de colis',
+    'weight' => 'Poids',
+    'content' => 'Contenu',
+    'estimated_delivery' => 'Livraison estimée',
+    'status' => 'Statut actuel',
+    'instructions' => 'Instructions',
+    'billing' => 'Facturation',
+    'amount_due' => 'Montant à régler par le destinataire',
+    'tracking_online' => 'Suivi en ligne',
+    'thanks' => 'Merci de votre confiance',
+    'phone' => 'Tél',
+    'back' => 'Retour',
+    'print' => 'Imprimer / Enregistrer en PDF',
+    'button' => 'Bordereau / Facture',
+];

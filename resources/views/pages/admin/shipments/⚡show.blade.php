@@ -73,9 +73,14 @@ new #[Title('Détail de l\'expédition')] class extends Component {
                 {{ __('admin.created_on', ['date' => $shipment->created_at->format('d/m/Y H:i')]) }}
             </p>
         </div>
-        <flux:button :href="$shipment->trackingUrl()" target="_blank" variant="ghost" icon="arrow-top-right-on-square">
-            {{ __('admin.view_public_page') }}
-        </flux:button>
+        <div class="flex flex-wrap items-center gap-2">
+            <flux:button :href="route('admin.shipments.waybill', $shipment)" target="_blank" variant="primary" icon="document-text">
+                {{ __('waybill.button') }}
+            </flux:button>
+            <flux:button :href="$shipment->trackingUrl()" target="_blank" variant="ghost" icon="arrow-top-right-on-square">
+                {{ __('admin.view_public_page') }}
+            </flux:button>
+        </div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">

@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Guia de remessa',
+    'tracking_number' => 'Número de rastreio',
+    'sender' => 'Remetente',
+    'recipient' => 'Destinatário',
+    'details' => 'Detalhes do envio',
+    'origin' => 'Origem',
+    'destination' => 'Destino',
+    'shipment_type' => 'Tipo de envio',
+    'service' => 'Serviço',
+    'packages' => 'Número de volumes',
+    'weight' => 'Peso',
+    'content' => 'Conteúdo',
+    'estimated_delivery' => 'Entrega estimada',
+    'status' => 'Estado atual',
+    'instructions' => 'Instruções',
+    'billing' => 'Faturação',
+    'amount_due' => 'Valor a pagar pelo destinatário',
+    'tracking_online' => 'Rastreio online',
+    'thanks' => 'Obrigado pela sua confiança',
+    'phone' => 'Tel',
+    'back' => 'Voltar',
+    'print' => 'Imprimir / Guardar como PDF',
+    'button' => 'Guia / Fatura',
+];

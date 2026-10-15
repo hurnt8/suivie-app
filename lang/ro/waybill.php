@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'Fișă de expediere',
+    'tracking_number' => 'Număr de urmărire',
+    'sender' => 'Expeditor',
+    'recipient' => 'Destinatar',
+    'details' => 'Detaliile expedierii',
+    'origin' => 'Origine',
+    'destination' => 'Destinație',
+    'shipment_type' => 'Tip de expediere',
+    'service' => 'Serviciu',
+    'packages' => 'Număr de colete',
+    'weight' => 'Greutate',
+    'content' => 'Conținut',
+    'estimated_delivery' => 'Livrare estimată',
+    'status' => 'Stare curentă',
+    'instructions' => 'Instrucțiuni',
+    'billing' => 'Facturare',
+    'amount_due' => 'Suma de plătit de către destinatar',
+    'tracking_online' => 'Urmărire online',
+    'thanks' => 'Vă mulțumim pentru încredere',
+    'phone' => 'Tel',
+    'back' => 'Înapoi',
+    'print' => 'Tipărește / Salvează ca PDF',
+    'button' => 'Fișă / Factură',
+];

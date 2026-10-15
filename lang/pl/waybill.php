@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'title' => 'List przewozowy',
+    'tracking_number' => 'Numer przesyłki',
+    'sender' => 'Nadawca',
+    'recipient' => 'Odbiorca',
+    'details' => 'Szczegóły przesyłki',
+    'origin' => 'Miejsce nadania',
+    'destination' => 'Miejsce docelowe',
+    'shipment_type' => 'Rodzaj przesyłki',
+    'service' => 'Usługa',
+    'packages' => 'Liczba paczek',
+    'weight' => 'Waga',
+    'content' => 'Zawartość',
+    'estimated_delivery' => 'Szacowana dostawa',
+    'status' => 'Aktualny status',
+    'instructions' => 'Instrukcje',
+    'billing' => 'Rozliczenie',
+    'amount_due' => 'Kwota do zapłaty przez odbiorcę',
+    'tracking_online' => 'Śledzenie online',
+    'thanks' => 'Dziękujemy za zaufanie',
+    'phone' => 'Tel',
+    'back' => 'Wstecz',
+    'print' => 'Drukuj / Zapisz jako PDF',
+    'button' => 'List przewozowy / Faktura',
+];
