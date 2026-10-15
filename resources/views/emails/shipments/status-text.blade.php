@@ -6,7 +6,7 @@
 @endphp
 {{ __('emails.greeting', ['name' => $addressee->name]) }}
 
-@if ($isRecipient)
+@if ($isRecipient && $isCreation)
 {{ __('emails.intro_recipient', ['sender' => $shipment->sender->name, 'company' => $settings->company_name]) }}
 @else
 {{ $isCreation ? __('emails.intro_created', ['company' => $settings->company_name]) : __('emails.intro_status_updated') }}

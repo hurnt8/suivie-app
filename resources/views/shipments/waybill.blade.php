@@ -27,7 +27,10 @@
         .head td { vertical-align: top; padding-bottom: 12px; border-bottom: 2px solid #111; }
         .brand { font-size: 20px; font-weight: bold; }
         .doc-title { text-align: right; font-weight: bold; font-size: 14px; text-transform: uppercase; }
-        .tracking { margin: 16px 0; padding: 12px; border: 2px dashed #111; text-align: center; }
+        .tracking-box { margin: 16px 0; }
+        .tracking-box td { vertical-align: middle; }
+        .qr { width: 130px; text-align: right; }
+        .tracking { padding: 12px; border: 2px dashed #111; text-align: center; }
         .tracking small { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
         .tracking strong { font-size: 24px; letter-spacing: 2px; }
         .parties td { width: 50%; vertical-align: top; padding-right: 14px; }
@@ -70,10 +73,20 @@
             </tr>
         </table>
 
-        <div class="tracking">
-            <small>{{ __('waybill.tracking_number') }}</small>
-            <strong>{{ $shipment->tracking_code }}</strong>
-        </div>
+        @php $qr = \App\Support\WaybillPdf::qrDataUri($shipment->trackingUrl()); @endphp
+        <table class="tracking-box">
+            <tr>
+                <td class="tracking">
+                    <small>{{ __('waybill.tracking_number') }}</small>
+                    <strong>{{ $shipment->tracking_code }}</strong>
+                </td>
+                @if ($qr)
+                    <td class="qr">
+                        <img src="{{ $qr }}" alt="QR" width="110" height="110">
+                    </td>
+                @endif
+            </tr>
+        </table>
 
         <table class="parties">
             <tr>

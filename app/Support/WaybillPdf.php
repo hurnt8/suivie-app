@@ -18,6 +18,30 @@ class WaybillPdf
         return class_exists(Dompdf::class);
     }
 
+    /**
+     * QR code (SVG, no GD needed) encoding the given URL, as a data URI usable
+     * in both the browser page and the PDF. Null when the library is missing.
+     */
+    public static function qrDataUri(string $url): ?string
+    {
+        if (! class_exists(\BaconQrCode\Writer::class)) {
+            return null;
+        }
+
+        try {
+            $renderer = new \BaconQrCode\Renderer\ImageRenderer(
+                new \BaconQrCode\Renderer\RendererStyle\RendererStyle(240, 0),
+                new \BaconQrCode\Renderer\Image\SvgImageBackEnd,
+            );
+
+            return 'data:image/svg+xml;base64,'.base64_encode((new \BaconQrCode\Writer($renderer))->writeString($url));
+        } catch (\Throwable $e) {
+            report($e);
+
+            return null;
+        }
+    }
+
     public static function render(Shipment $shipment): string
     {
         $shipment->loadMissing(['sender', 'recipient']);

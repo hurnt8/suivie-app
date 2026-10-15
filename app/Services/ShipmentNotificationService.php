@@ -13,19 +13,21 @@ use Illuminate\Support\Facades\Notification;
 class ShipmentNotificationService
 {
     /**
-     * Every status change emails the sender: the customer is kept informed at
-     * each step of the shipment, including sorting, customs, return and cancellation.
+     * Every status change emails both the sender and the recipient (who also
+     * receives the tracking link and the waybill), at each step of the shipment,
+     * including sorting, customs, return and cancellation.
      */
     public function notifyStatus(Shipment $shipment, ShipmentStatus $status): void
     {
         $shipment->loadMissing(['sender', 'recipient']);
 
-        $this->send($shipment, $status, $shipment->sender->email, ShipmentStatusNotification::AUDIENCE_SENDER);
+        $senderEmail = $shipment->sender->email;
+        $recipientEmail = $shipment->recipient->email;
 
-        // The amount/quote on a shipment is communicated to the recipient too:
-        // when one is set, the recipient gets the creation email with the tracking link.
-        if ($status === ShipmentStatus::Registered && $shipment->hasAmount()) {
-            $this->send($shipment, $status, $shipment->recipient->email, ShipmentStatusNotification::AUDIENCE_RECIPIENT);
+        $this->send($shipment, $status, $senderEmail, ShipmentStatusNotification::AUDIENCE_SENDER);
+
+        if (filled($recipientEmail) && strcasecmp((string) $recipientEmail, (string) $senderEmail) !== 0) {
+            $this->send($shipment, $status, $recipientEmail, ShipmentStatusNotification::AUDIENCE_RECIPIENT);
         }
     }
 
