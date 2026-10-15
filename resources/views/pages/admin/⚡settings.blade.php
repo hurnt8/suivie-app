@@ -132,27 +132,6 @@ new #[Title('Paramètres')] class extends Component {
             </div>
         </div>
 
-        <div class="card-elegant p-6">
-            <flux:heading size="lg" class="mb-1">{{ __('admin.settings_section_mail') }}</flux:heading>
-            <flux:subheading class="mb-5">{{ __('admin.settings_mail_hint') }}</flux:subheading>
-
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <flux:input wire:model="mail_from_address" type="email" :label="__('admin.field_mail_from_address')" />
-                <flux:input wire:model="mail_from_name" :label="__('admin.field_mail_from_name')" />
-
-                <flux:input wire:model="smtp_host" :label="__('admin.field_smtp_host')" />
-                <flux:input wire:model="smtp_port" type="number" :label="__('admin.field_smtp_port')" />
-                <flux:input wire:model="smtp_username" :label="__('admin.field_smtp_username')" />
-                <flux:input wire:model="smtp_password" type="password" :label="__('admin.field_smtp_password')" :description="__('admin.password_leave_blank')" />
-
-                <flux:select wire:model="smtp_encryption" :label="__('admin.field_smtp_encryption')">
-                    <flux:select.option value="">{{ __('admin.smtp_encryption_none') }}</flux:select.option>
-                    <flux:select.option value="tls">TLS</flux:select.option>
-                    <flux:select.option value="ssl">SSL</flux:select.option>
-                </flux:select>
-            </div>
-        </div>
-
         <div class="flex justify-end">
             <flux:button type="submit" variant="primary">{{ __('admin.save') }}</flux:button>
         </div>
